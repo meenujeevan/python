@@ -1,5 +1,5 @@
 from tkinter import *
-
+import tkinter.messagebox as tkmb
 root = Tk()
 root.title('Home Bakery')
 
@@ -90,14 +90,14 @@ def getvals():
             with open("formdetls.txt", "a") as f:
                 f.write(f"{namevalue.get(),emailvalue.get(),passwordvalue.get(),var.get(),phonevalue.get()}\n")
             
-            messagebox.showinfo('confirmation', 'Registered successfully')
+            tkmb.showinfo('confirmation', 'Registered successfully')
             nameentry.focus_set()
             clear()
 
         except Exception as ep:
-            messagebox.showerror('', ep) 
+            tkmb.showerror('', ep) 
     else:
-        messagebox.showerror('Error', warn)
+        tkmb.showerror('Error', warn)
         
         
 def clear1():
@@ -133,15 +133,15 @@ def getvals1():
                 email=currentline[1].strip(" '")
                 password=currentline[2].strip(" '")
                 if (uname == email and upwd == password):
-                    messagebox.showinfo('Login Status', 'Logged in Successfully!') 
+                    tkmb.showinfo('Login Status', 'Logged in Successfully!') 
                     email1entry.focus_set()
                     clear1()
                     break
                 
             else:
-                messagebox.showerror('Login Status', 'invalid username or password')
+                tkmb.showerror('Login Status', 'invalid username or password')
     else:
-        messagebox.showerror('', warn)
+        tkmb.showerror('', warn)
 
         
         
@@ -149,9 +149,9 @@ def getvals1():
         
 root.geometry("844x544")        
 
-
+Label(root, text="Welcome to Home Bakery", font="comicsansms 13 bold", pady=10).grid(row=0, column=2)
         
-Label(root, text="Welcome to Home Bakery", font="comicsansms 13 bold", pady=15).grid(row=0, column=2)
+
 
 #Text for our form
 name = Label(root, text="Name")
@@ -245,15 +245,15 @@ def forgotpass():
                 email=currentline[1].strip(" '")
                 password=currentline[2].strip(" '")
                 if (uname == email):
-                    messagebox.showinfo('Your password is', password) 
-                    email1entry.focus_set()
-                    clear1()
+                    tkmb.showinfo('Your password is', password) 
+                    password1entry.focus_set()
+                    
                     break
                 
             else:
-                messagebox.showerror('Email not found', 'Please register your details first')
+                tkmb.showerror('Email not found', 'Please register your details first')
     else:
-        messagebox.showerror('', warn)
+        tkmb.showerror('', warn)
 
 Button(text="Forgot Password", command=forgotpass).grid(row=12, column=2)
 
